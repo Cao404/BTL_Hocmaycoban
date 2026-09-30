@@ -1,0 +1,23 @@
+.venv/
+.unused-artifacts/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Dữ liệu gốc/tách tập được tái tạo bằng script, không đưa lên Git.
+data/raw/
+data/processed/
+
+# Artifact có thể tái tạo.
+models/*.joblib
+models/*.json
+reports/figures/*.png
+reports/results/*.csv
+reports/results/*.json
+reports/results/*.lock
+reports/bao_cao_project_07.docx
+reports/qa/
+
+.env
+.DS_Store
+Thumbs.db

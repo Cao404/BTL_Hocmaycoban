@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Bank Marketing{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('index') }}">PROJECT 07 <span>Bank Marketing</span></a>
+    <nav aria-label="Điều hướng chính">
+      <a class="{{ 'active' if active == 'index' else '' }}" href="{{ url_for('index') }}">Phạm vi</a>
+      <a class="{{ 'active' if active == 'score' else '' }}" href="{{ url_for('score') }}">Chấm điểm</a>
+      <a class="{{ 'active' if active == 'dashboard' else '' }}" href="{{ url_for('dashboard') }}">Đánh giá</a>
+      <a class="{{ 'active' if active == 'model-card' else '' }}" href="{{ url_for('model_card') }}">Model card</a>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>Hệ thống hỗ trợ ưu tiên liên hệ • Không dùng để loại trừ dịch vụ</footer>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "random_state": 42,
+  "split": {
+    "train_size": 0.6,
+    "validation_size": 0.2,
+    "test_size": 0.2
+  },
+  "model_selection": {
+    "c_values": [0.1, 1.0, 10.0],
+    "class_weights": [null, "balanced"],
+    "thresholds": [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.6],
+    "minimum_recall": 0.6,
+    "primary_metric": "pr_auc",
+    "cross_validation_folds": 5
+  }
+}
