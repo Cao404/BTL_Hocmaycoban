@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Đánh giá • Bank Marketing{% endblock %}
+{% block content %}
+<section class="page-head"><p class="eyebrow">BẰNG CHỨNG ĐÁNH GIÁ</p><h1>Ngưỡng làm thay đổi sai số</h1><p>Bảng tương tác bên dưới dùng validation để minh họa trade-off. Test chỉ dùng cho kết luận cuối.</p></section>
+{% if threshold_rows %}
+<section class="threshold-panel" data-thresholds='{{ threshold_rows|tojson }}'>
+  <div class="threshold-control"><label for="threshold">Ngưỡng <output id="threshold-value"></output></label><input id="threshold" type="range" min="0" max="{{ threshold_rows|length - 1 }}" value="0" step="1"></div>
+  <div class="metric-grid"><div><span>Precision</span><strong id="precision"></strong></div><div><span>Recall</span><strong id="recall"></strong></div><div><span>F1</span><strong id="f1"></strong></div><div><span>Tỷ lệ gọi</span><strong id="contact-rate"></strong></div></div>
+  <div class="confusion"><div class="tn"><span>TN</span><strong id="tn"></strong></div><div class="fp"><span>FP</span><strong id="fp"></strong></div><div class="fn"><span>FN</span><strong id="fn"></strong></div><div class="tp"><span>TP</span><strong id="tp"></strong></div></div>
+</section>
+{% else %}<p class="empty">Chưa có kết quả validation. Chạy <code>python -m src.train</code>.</p>{% endif %}
+{% if final %}<section class="final-metrics"><h2>Kết luận trên test độc lập</h2><p>Ngưỡng {{ '%.2f'|format(final.selected_threshold_frozen_on_validation) }} được đóng băng trước khi mở test.</p><div class="metric-grid"><div><span>PR-AUC</span><strong>{{ '%.3f'|format(final.metrics.pr_auc) }}</strong></div><div><span>Precision</span><strong>{{ '%.3f'|format(final.metrics.precision) }}</strong></div><div><span>Recall</span><strong>{{ '%.3f'|format(final.metrics.recall) }}</strong></div><div><span>F1</span><strong>{{ '%.3f'|format(final.metrics.f1) }}</strong></div></div><p><small>Average Precision: {{ '%.3f'|format(final.metrics.average_precision) }}. PR-AUC và Average Precision được báo riêng.</small></p></section>{% endif %}
+{% endblock %}
