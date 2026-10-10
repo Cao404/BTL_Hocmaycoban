@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Phạm vi • Bank Marketing{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">MÔ HÌNH TRƯỚC CUỘC GỌI</p>
+    <h1>Gọi ít hơn.<br>Đánh giá rõ hơn.</h1>
+    <p class="lead">Ước lượng khả năng quan tâm tới tiền gửi có kỳ hạn bằng dữ liệu có sẵn trước liên hệ. Ngưỡng quyết định được chốt trên validation, không điều chỉnh theo test.</p>
+    <div class="actions"><a class="button" href="{{ url_for('score') }}">Thử chấm điểm</a><a class="text-link" href="{{ url_for('dashboard') }}">Xem bằng chứng đánh giá →</a></div>
+  </div>
+  <div class="hero-stat">
+    <span>45.211</span><p>lần liên hệ trong bộ UCI Bank Marketing</p>
+    <span>15</span><p>đặc trưng đầu vào; loại bỏ duration</p>
+  </div>
+</section>
+<section class="grid-three">
+  <article><b>01</b><h2>Đúng thời điểm</h2><p>Chỉ dùng thông tin có trước khi cuộc gọi bắt đầu. `duration` không đi vào train hoặc serving.</p></article>
+  <article><b>02</b><h2>Đúng phép đo</h2><p>PR-AUC, precision, recall, F1 và confusion matrix được đặt cạnh baseline thay vì chỉ báo accuracy.</p></article>
+  <article><b>03</b><h2>Đúng vai trò</h2><p>Kết quả là hỗ trợ xếp hạng. Nhân viên vẫn chịu trách nhiệm và khách hàng không bị loại khỏi dịch vụ.</p></article>
+</section>
+{% endblock %}
