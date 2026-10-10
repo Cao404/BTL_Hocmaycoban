@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Chấm điểm • Bank Marketing{% endblock %}
+{% block content %}
+<section class="page-head"><p class="eyebrow">THAO TÁC CHÍNH</p><h1>Ước lượng trước cuộc gọi</h1><p>Nhập đủ 15 trường. Giá trị ngoài miền quan sát sẽ được báo rõ, không tự động thay thế.</p></section>
+{% if errors %}<div class="errors"><strong>Không thể chấm điểm</strong><ul>{% for error in errors %}<li>{{ error }}</li>{% endfor %}</ul></div>{% endif %}
+{% if result %}<section class="result"><p>Xác suất ước lượng</p><strong>{{ '%.1f'|format(result.probability * 100) }}%</strong><span>{{ result.priority_label }}</span><small>Ngưỡng {{ '%.2f'|format(result.threshold) }} • {{ result.warning }}</small></section>{% endif %}
+<form class="score-form" method="post">
+  <div class="form-grid">
+  {% for name in ['age','balance','day','campaign','pdays','previous'] %}
+    <label><span>{{ field_meta[name].label }} <code>{{ name }}</code></span><small>{{ ranges[name].min }} đến {{ ranges[name].max }} {{ field_meta[name].unit }}</small><input type="number" step="any" name="{{ name }}" value="{{ values[name] }}" required></label>
+  {% endfor %}
+  {% for name in ['job','marital','education','default','housing','loan','contact','month','poutcome'] %}
+    <label><span>{{ field_meta[name].label }} <code>{{ name }}</code></span><small>Chọn một giá trị hợp lệ</small><select name="{{ name }}" required>{% for option in categories[name] %}<option value="{{ option }}" {{ 'selected' if values[name] == option else '' }}>{{ option }}</option>{% endfor %}</select></label>
+  {% endfor %}
+  </div>
+  <button class="button" type="submit">Tính xác suất</button>
+</form>
+{% endblock %}
