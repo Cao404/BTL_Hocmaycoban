@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Model card • Bank Marketing{% endblock %}
+{% block content %}
+<section class="page-head"><p class="eyebrow">MODEL CARD</p><h1>Phạm vi trước độ chính xác</h1><p>Logistic Regression dễ kiểm tra, nhưng xác suất dự đoán vẫn chịu giới hạn của dữ liệu chiến dịch lịch sử.</p></section>
+<section class="prose-grid">
+  <article><h2>Dùng cho</h2><p>Xếp hạng danh sách liên hệ và mô phỏng ảnh hưởng của ngưỡng tới precision, recall và khối lượng cuộc gọi.</p></article>
+  <article><h2>Không dùng cho</h2><p>Từ chối dịch vụ, đánh giá phẩm chất cá nhân, tự động gọi hoặc áp dụng nguyên trạng cho ngân hàng/quốc gia khác.</p></article>
+  <article><h2>Dữ liệu</h2><p>UCI Bank Marketing, 45.211 quan sát, giấy phép CC BY 4.0. `unknown` được giữ như một mức quan sát.</p></article>
+  <article><h2>Giám sát</h2><p>Theo dõi drift, tỷ lệ dương tính, precision/recall theo nhóm và phiên bản pipeline; huấn luyện lại phải có vòng validation/test mới.</p></article>
+  <article><h2>Đánh giá</h2><p>Mô hình chọn bằng PR-AUC trên validation. Độ biến thiên được đo bằng Stratified 5-fold cross-validation chỉ trên train; test được giữ cho kết luận cuối.</p></article>
+  <article><h2>Giới hạn định danh</h2><p>Dữ liệu không có mã khách hàng ổn định nên không thể xác minh hoặc group split theo từng khách hàng.</p></article>
+</section>
+{% endblock %}
