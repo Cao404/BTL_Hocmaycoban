@@ -2,6 +2,12 @@
 
 Project xây dựng mô hình hỗ trợ ưu tiên cuộc gọi trước khi liên hệ khách hàng. Hệ thống dự đoán xác suất đăng ký tiền gửi có kỳ hạn từ các thuộc tính có sẵn trước cuộc gọi, loại bỏ `duration` để tránh rò rỉ thông tin.
 
+## Thông tin sinh viên
+
+- Họ và tên: Vũ Hữu Cao
+- Mã sinh viên: 10123038
+- Hình thức thực hiện: Cá nhân
+
 ## Kết quả cần tái tạo
 
 Quy trình được tách thành bốn bước độc lập:
